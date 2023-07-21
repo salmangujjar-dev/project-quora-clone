@@ -1,24 +1,18 @@
 import { useEffect } from "react";
-import { Button, Toolbar, Container } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { Toolbar, Container } from "@mui/material";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { logout } from "../redux/slices/authSlice";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/header/Navbar";
 
 function Home() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  const handleLogout = () => {
-    dispatch(logout()) && navigate("/");
-  };
-
   useEffect(() => {
     userInfo ?? navigate("/");
-  }, []);
+  }, [userInfo, navigate]);
 
   return (
     <div>
@@ -26,12 +20,6 @@ function Home() {
       <Toolbar />
       <Container>
         <h1>Home</h1>
-        <Button
-          variant="contained"
-          onClick={handleLogout}
-        >
-          Logout
-        </Button>
       </Container>
     </div>
   );

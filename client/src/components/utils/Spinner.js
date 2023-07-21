@@ -1,4 +1,4 @@
-import "../styles/spinner.css";
+import "../../styles/spinner.css";
 const Spinner = () => {
   return <div className="lds-hourglass"></div>;
 };
