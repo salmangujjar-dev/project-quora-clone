@@ -13,11 +13,13 @@ function App() {
   const { loading, isLoggedIn, success, errorCause } = useSelector(
     (state) => state.auth
   );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     success && setShowLogin(true);
     isLoggedIn && navigate("/home");
+    localStorage.getItem("token") && navigate("/home");
   }, [navigate, success, isLoggedIn]);
 
   return (

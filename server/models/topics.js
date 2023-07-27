@@ -13,6 +13,12 @@ const topicSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  questions: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "questions",
+    },
+  ],
   image: {
     type: Buffer,
   },

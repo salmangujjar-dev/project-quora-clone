@@ -1,27 +1,27 @@
-import { useLocation, Navigate, Outlet } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useLocation, Navigate, Outlet } from "react-router-dom";
 
 import { getUser } from "../../redux/actions/authActions";
 import Loader from "../utils/Loader";
 
 const RequireAuth = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(!isLoggedIn);
 
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const { loading, isLoggedIn } = useSelector((state) => state.auth);
-
   useEffect(() => {
-    const fetchUser = (token) => {
+    const fetchUser = async (token) => {
       const _id = localStorage.getItem("_id");
-
-      dispatch(getUser({ _id, token })).then(() => setIsAuthenticated(false));
+      await dispatch(getUser({ _id, token })).then(() => {
+        setIsAuthenticated(false);
+      });
     };
 
     const token = localStorage.getItem("token");
-
     !isLoggedIn && token && fetchUser(token);
   }, [dispatch, isLoggedIn]);
 

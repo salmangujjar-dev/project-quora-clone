@@ -11,6 +11,9 @@ import {
   Radio,
   Avatar,
   FormLabel,
+  Divider,
+  Box,
+  Typography,
 } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,11 +21,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/header/Navbar";
 import { updateUser } from "../redux/actions/authActions";
 import Spinner from "../components/utils/Spinner";
+//import QuestionCard from "../components/question/QuestionCard";
 
 const Profile = () => {
   const [image, setImage] = useState(null);
   const [previewImage, setPreviewImage] = useState();
   const [gender, setGender] = useState("Male");
+  // const [questions, setQuestions] = useState([]);
 
   const username = useRef();
   const email = useRef();
@@ -54,6 +59,7 @@ const Profile = () => {
       age: age.current.value,
       username: userInfo?.username,
       email: userInfo?.email,
+      following: userInfo?.following,
       gender,
     };
     const data = new FormData();
@@ -188,6 +194,40 @@ const Profile = () => {
             </Stack>
           </FormControl>
         </form>
+        <Box mt={5}>
+          <Divider>
+            <Typography
+              align="center"
+              component="div"
+              variant="h2"
+              fontWeight="bold"
+              color="primary"
+              letterSpacing={12}
+            >
+              Questions
+            </Typography>
+          </Divider>
+          {/* {questions.map(
+            (question, index) =>
+              question.relatedTopics.some((question) =>
+                userInfo.following.includes(question)
+              ) && (
+                <QuestionCard
+                  key={index}
+                  questionId={question._id}
+                  questionBody={question.question}
+                  author={question.author}
+                  date={question.createdAt}
+                  reactions={question.reactions}
+                  likeCount={question.likeCount}
+                  dislikeCount={question.dislikeCount}
+                  dispatch={dispatch}
+                  userId={userInfo._id}
+                  token={token}
+                />
+              )
+          )} */}
+        </Box>
       </Container>
     </>
   );

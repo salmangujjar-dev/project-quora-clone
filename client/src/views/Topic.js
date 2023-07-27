@@ -8,30 +8,34 @@ import TopicModal from "../components/topic/TopicModal";
 import TopicCard from "../components/topic/TopicCard";
 import TopicDetails from "../components/topic/TopicDetails";
 import { toggleModal } from "../redux/slices/topicSlice";
-import { getTopics, getTopicDetails } from "../redux/actions/topicActions";
+import { getTopics } from "../redux/actions/topicActions";
 
 const Topic = () => {
   const dispatch = useDispatch();
 
-  const { _id } = useParams();
+  const topicId = useParams()?._id;
+
   const { state } = useLocation();
 
-  const { token } = useSelector((state) => state.auth);
+  const { userInfo, token, loading } = useSelector((state) => state.auth);
   const { topics } = useSelector((state) => state.topics);
 
   useEffect(() => {
-    _id
-      ? dispatch(getTopicDetails({ _id, token }))
-      : dispatch(getTopics(token));
-  }, [dispatch, token, _id]);
+    topicId ?? dispatch(getTopics(token));
+  }, [dispatch, token, topicId]);
 
   return (
     <>
       <Navbar />
       <Toolbar />
       <Container>
-        {_id ? (
-          <TopicDetails topicInfo={state} />
+        {topicId ? (
+          <TopicDetails
+            userInfo={userInfo}
+            topicInfo={state}
+            dispatch={dispatch}
+            token={token}
+          />
         ) : (
           <>
             <Box className="d-flex justify-content-center">
@@ -54,10 +58,15 @@ const Topic = () => {
               {topics.map((topic, index) => (
                 <TopicCard
                   key={index}
-                  _id={topic._id}
+                  dispatch={dispatch}
+                  topicId={topic._id}
+                  userInfo={userInfo}
                   title={topic.title}
                   description={topic.description}
                   image={topic.image}
+                  followers={topic.followers}
+                  token={token}
+                  loading={loading}
                 />
               ))}
             </Stack>
