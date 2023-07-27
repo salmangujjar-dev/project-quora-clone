@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registerUserReducer, loginUserReducer } from "../extraReducers";
+
+import {
+  registerUserReducer,
+  loginUserReducer,
+  getUserReducer,
+  updateUserReducer,
+  toggleFollowTopicReducer,
+} from "../extraReducers";
 
 const initialState = {
   loading: false,
@@ -19,16 +26,16 @@ const authSlice = createSlice({
       localStorage.removeItem("token");
       return initialState;
     },
-    updateUser: (state, { payload }) => {
-      state.userInfo = payload;
-    },
   },
   extraReducers: {
     ...registerUserReducer,
     ...loginUserReducer,
+    ...getUserReducer,
+    ...updateUserReducer,
+    ...toggleFollowTopicReducer,
   },
 });
 
-export const { logout, updateUser } = authSlice.actions;
+export const { logout, updateUserLocal } = authSlice.actions;
 
 export default authSlice.reducer;

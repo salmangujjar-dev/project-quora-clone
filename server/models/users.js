@@ -30,6 +30,12 @@ const userSchema = new mongoose.Schema({
   profile_image: {
     type: Buffer,
   },
+  following: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "topics",
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {

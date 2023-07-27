@@ -16,11 +16,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { logout } from "../redux/slices/authSlice";
+import { logout } from "../../redux/slices/authSlice";
 
 const pages = [
   { name: "Home", path: "/home" },
   { name: "About", path: "/about" },
+  { name: "Topic", path: "/topic" },
 ];
 
 const Title = "Quora";
@@ -36,9 +37,9 @@ const Navbar = () => {
 
   const settings = [
     {
-      name: "Profile",
+      name: "About",
       operation: function () {
-        navigate("/profile");
+        navigate("/about");
         handleCloseUserMenu();
       },
     },

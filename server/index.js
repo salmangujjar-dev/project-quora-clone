@@ -6,6 +6,8 @@ const cors = require("cors");
 
 const authController = require("./controllers/auth");
 const userController = require("./controllers/user");
+const topicController = require("./controllers/topic");
+const questionController = require("./controllers/question");
 
 const app = express();
 const PORT = process.env.PORT;
@@ -23,8 +25,10 @@ mongoose
   })
   .catch((err) => {});
 
-app.use(bodyParser.json({ limit: "1mb" }));
+app.use(bodyParser.json());
 app.use("/api/v1/auth", authController);
 app.use("/api/v1/user", userController);
+app.use("/api/v1/topic", topicController);
+app.use("/api/v1/question", questionController);
 
 app.listen(PORT);

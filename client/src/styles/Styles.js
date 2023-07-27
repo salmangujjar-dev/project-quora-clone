@@ -6,9 +6,17 @@ const Styles = {
     transform: "translate(-50%, -50%)",
     bgcolor: "background.paper",
     width: 500,
-    pt: 2,
-    px: 4,
-    pb: 3,
+    p: 4,
+    borderRadius: 2,
+  },
+  Avatar: {
+    width: 200,
+    height: 200,
+    cursor: "pointer",
+    transition: "opacity 0.3s",
+    "&:hover": {
+      opacity: 0.7,
+    },
   },
   SearchTextField: {
     mr: 3,

@@ -3,8 +3,8 @@ import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+import Login from "./components/authetication/Login";
+import Signup from "./components/authetication/Signup";
 
 function App() {
   const [showLogin, setShowLogin] = useState(true);
@@ -13,11 +13,13 @@ function App() {
   const { loading, isLoggedIn, success, errorCause } = useSelector(
     (state) => state.auth
   );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     success && setShowLogin(true);
     isLoggedIn && navigate("/home");
+    localStorage.getItem("token") && navigate("/home");
   }, [navigate, success, isLoggedIn]);
 
   return (
