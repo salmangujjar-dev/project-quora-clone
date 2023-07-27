@@ -16,7 +16,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LockIcon from "@mui/icons-material/Lock";
 
-import { registerUser } from "../redux/actions/authActions";
+import { registerUser } from "../../redux/actions/authActions";
+import Styles from "../../styles/Styles";
 
 const Login = ({ setShowLogin, dispatch, error }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -88,15 +89,7 @@ const Login = ({ setShowLogin, dispatch, error }) => {
               className="mx-auto"
               src={previewImage}
               title="Upload Image"
-              sx={{
-                width: 200,
-                height: 200,
-                cursor: "pointer",
-                transition: "opacity 0.3s",
-                "&:hover": {
-                  opacity: 0.7,
-                },
-              }}
+              sx={Styles.Avatar}
               onClick={handleAvatarClick}
             />
             <input
@@ -145,16 +138,13 @@ const Login = ({ setShowLogin, dispatch, error }) => {
             />
             <RadioGroup
               row
-              aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="Male"
               name="gender"
               onChange={handleGenderChange}
               className="justify-content-around align-items-center"
               required
             >
-              <FormLabel id="demo-radio-buttons-group-label">
-                Gender:{" "}
-              </FormLabel>
+              <FormLabel>Gender: </FormLabel>
               <FormControlLabel
                 value="Male"
                 control={<Radio />}

@@ -1,28 +1,33 @@
 const express = require("express");
 const multer = require("multer");
 
-const { verifyToken } = require("./middlewares");
+const { verifyToken } = require("../utils/middlewares");
 const { Users } = require("../models/users");
 
 const router = express.Router();
 const upload = multer();
 
-router.get("/:id", verifyToken, async (req, res) => {
+router.get("/:_id", verifyToken, async (req, res) => {
   try {
-    const _id = req.params.id;
-    const user = await Users.findOne({ _id }, { password: 0 });
+    const { _id } = req.params;
 
-    res.status(200).json({
-      user,
-    });
-  } catch (err) {
-    res.status(500).json({
-      message: "Something went wrong",
-    });
+    const user = await Users.findOne({ _id }).select("-__v");
+    if (!user) {
+      return res
+        .status(401)
+        .json({ message: "User does not exist!", errorCause: "username" });
+    }
+
+    const userInfo = user.toObject();
+    delete userInfo.password;
+
+    return res.status(200).json({ userInfo });
+  } catch (error) {
+    return res.status(500).json({ message: "Something went wrong." });
   }
 });
 
-router.put("/:id", upload.single("file"), verifyToken, async (req, res) => {
+router.put("/", upload.single("file"), verifyToken, async (req, res) => {
   profile_image = req.file?.buffer || null;
 
   const updatedUser = {

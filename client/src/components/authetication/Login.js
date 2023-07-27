@@ -11,8 +11,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LockIcon from "@mui/icons-material/Lock";
 
-import Spinner from "./Spinner";
-import { loginUser } from "../redux/actions/authActions";
+import Spinner from "../utils/Spinner";
+import { loginUser } from "../../redux/actions/authActions";
 
 const Login = ({ setShowLogin, dispatch, error, loading }) => {
   const [showPassword, setShowPassword] = useState(false);

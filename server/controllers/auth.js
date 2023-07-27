@@ -3,7 +3,10 @@ const multer = require("multer");
 const jwt = require("jsonwebtoken");
 
 const { Users } = require("../models/users");
-const { checkUsernameExists, checkEmailExists } = require("./middlewares");
+const {
+  checkUsernameExists,
+  checkEmailExists,
+} = require("../utils/middlewares");
 
 const router = express.Router();
 const upload = multer();
@@ -15,7 +18,7 @@ router.post(
   checkEmailExists,
   async (req, res) => {
     profile_image = req.file?.buffer || null;
-    const userInfo = req.body.userInfo;
+    const { userInfo } = req.body;
     const newUser = new Users({
       ...userInfo,
       profile_image,

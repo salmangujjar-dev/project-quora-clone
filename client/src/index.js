@@ -3,14 +3,14 @@ import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer } from "react-toastify";
 
 import App from "./App";
 import Home from "./views/Home";
-import Profile from "./views/Profile";
-import RequireAuth from "./components/RequireAuth";
-import { store, persistor } from "./redux/store";
+import About from "./views/About";
+import Topic from "./views/Topic";
+import RequireAuth from "./components/authetication/RequireAuth";
+import { store } from "./redux/store";
 import { theme } from "./styles/Theme";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -27,29 +27,32 @@ root.render(
       autoClose={2000}
     />
     <Provider store={store}>
-      <PersistGate
-        loading={null}
-        persistor={persistor}
-      >
-        <BrowserRouter>
-          <Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={<App />}
+          />
+          <Route element={<RequireAuth />}>
             <Route
-              path="/"
-              element={<App />}
+              path="/home"
+              element={<Home />}
             />
-            <Route element={<RequireAuth />}>
-              <Route
-                path="/home"
-                element={<Home />}
-              />
-              <Route
-                path="/profile"
-                element={<Profile />}
-              />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </PersistGate>
+            <Route
+              path="/about"
+              element={<About />}
+            />
+            <Route
+              path="/topic"
+              element={<Topic />}
+            />
+            <Route
+              path="/topic/:_id"
+              element={<Topic />}
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </Provider>
   </ThemeProvider>
 );
