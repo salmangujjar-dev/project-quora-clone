@@ -5,6 +5,7 @@ import {
   loginUserReducer,
   getUserReducer,
   updateUserReducer,
+  toggleFollowTopicReducer,
 } from "../extraReducers";
 
 const initialState = {
@@ -31,6 +32,7 @@ const authSlice = createSlice({
     ...loginUserReducer,
     ...getUserReducer,
     ...updateUserReducer,
+    ...toggleFollowTopicReducer,
   },
 });
 

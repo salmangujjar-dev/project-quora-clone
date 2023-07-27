@@ -9,6 +9,7 @@ import App from "./App";
 import Home from "./views/Home";
 import About from "./views/About";
 import Topic from "./views/Topic";
+import Profile from "./views/Profile";
 import RequireAuth from "./components/authetication/RequireAuth";
 import { store } from "./redux/store";
 import { theme } from "./styles/Theme";
@@ -49,6 +50,10 @@ root.render(
             <Route
               path="/topic/:_id"
               element={<Topic />}
+            />
+            <Route
+              path="/profile/:_id"
+              element={<Profile />}
             />
           </Route>
         </Routes>
