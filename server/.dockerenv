@@ -1,0 +1,4 @@
+PORT=3001
+MONGO_DB_URL=mongodb://mongo:27017/quora-clone
+CORS_ORIGIN=http://localhost:3000
+QUESTIONS_PER_PAGE=10

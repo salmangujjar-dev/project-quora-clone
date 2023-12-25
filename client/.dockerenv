@@ -1,0 +1,4 @@
+REACT_APP_AUTH_API=http://localhost:3001/api/v1/auth/
+REACT_APP_USER_API=http://localhost:3001/api/v1/user/
+REACT_APP_TOPIC_API=http://localhost:3001/api/v1/topic/
+REACT_APP_QUESTION_API=http://localhost:3001/api/v1/question/
