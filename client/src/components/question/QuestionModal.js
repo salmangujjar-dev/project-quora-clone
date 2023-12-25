@@ -54,8 +54,8 @@ const QuestionModal = ({ dispatch }) => {
   };
 
   useEffect(() => {
-    topics.length === 0 && dispatch(getTopics(token));
-  }, [dispatch, token, topics]);
+    dispatch(getTopics(token));
+  }, [dispatch, token]);
 
   return (
     <Modal
@@ -126,9 +126,9 @@ const QuestionModal = ({ dispatch }) => {
         ) : (
           <Typography
             component="div"
-            variant="h2"
+            variant="h4"
           >
-            No Topics Available
+            No Topics Available.<br /> Create a Topic First.
           </Typography>
         )}
       </Box>
