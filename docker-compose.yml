@@ -1,0 +1,56 @@
+version: "3.7"
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - data-volume:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - app-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: quora-back
+    container_name: quora-back
+    volumes:
+      - ./server:/server
+      - /node_modules
+    ports:
+      - 3001:3001
+    depends_on:
+      - mongo
+    env_file: ./server/.dockerenv
+    environment:
+      - NODE_ENV=development
+    networks:
+      - app-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: quora-front
+    container_name: quora-front
+    volumes:
+      - ./client:/client
+      - /client/node_modules
+    depends_on:
+      - server
+    env_file: ./client/.dockerenv
+    ports:
+      - 3000:3000
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  data-volume:
+  node_modules:
+  web-root:
+    driver: local
