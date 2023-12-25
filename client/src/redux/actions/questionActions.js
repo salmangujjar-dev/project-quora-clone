@@ -44,6 +44,26 @@ export const getQuestions = createAsyncThunk(
   }
 );
 
+export const getUserQuestions = createAsyncThunk(
+  "getUserQuestions",
+  async ({ _id, token, currentPage }, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(
+        process.env.REACT_APP_USER_API + _id + "/",
+        {
+          headers: {
+            token: token,
+          },
+        }
+      );
+      return response.data.questions;
+    } catch (error) {
+      toast.error(error.response.data.message);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const performReaction = createAsyncThunk(
   "performReaction",
   async (
