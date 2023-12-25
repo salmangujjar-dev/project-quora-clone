@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   askQuestionReducer,
   getQuestionsReducer,
+  getUserQuestionsReducer,
   performReactionReducer,
 } from "../extraReducers";
 
@@ -24,6 +25,7 @@ const questionSlice = createSlice({
     ...askQuestionReducer,
     ...getQuestionsReducer,
     ...performReactionReducer,
+    ...getUserQuestionsReducer
   },
 });
 

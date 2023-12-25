@@ -9,6 +9,7 @@ import { createTopic, getTopics } from "./actions/topicActions";
 import {
   askQuestion,
   getQuestions,
+  getUserQuestions,
   performReaction,
 } from "./actions/questionActions";
 
@@ -142,6 +143,19 @@ const getQuestionsReducer = {
   },
 };
 
+const getUserQuestionsReducer = {
+  [getUserQuestions.pending]: (state) => {
+    state.loading = true;
+  },
+  [getUserQuestions.fulfilled]: (state, { payload }) => {
+    state.loading = false;
+    state.questions = payload;
+  },
+  [getUserQuestions.rejected]: (state) => {
+    state.loading = false;
+  },
+};
+
 const performReactionReducer = {
   [performReaction.pending]: (state) => {
     state.loading = true;
@@ -184,4 +198,5 @@ export {
   getQuestionsReducer,
   performReactionReducer,
   toggleFollowTopicReducer,
+  getUserQuestionsReducer
 };

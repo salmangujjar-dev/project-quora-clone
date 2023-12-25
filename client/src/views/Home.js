@@ -17,7 +17,7 @@ import { toggleModal } from "../redux/slices/questionSlice";
 import { getQuestions } from "../redux/actions/questionActions";
 import axios from "axios";
 
-function Home() {
+function Home({ compact }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -36,8 +36,8 @@ function Home() {
     const fetchQuestionsCount = async () => {
       const response = await axios.get(
         process.env.REACT_APP_USER_API +
-          userInfo._id +
-          "/followed-topics/question-count",
+        userInfo._id +
+        "/followed-topics/question-count",
         {
           headers: {
             token,
@@ -59,10 +59,10 @@ function Home() {
 
   return (
     <div>
-      <Navbar />
+      {!compact && <Navbar />}
       <Toolbar />
       <Container>
-        <Box className="d-flex justify-content-center">
+        {!compact && <Box className="d-flex justify-content-center">
           <Button
             variant="contained"
             onClick={() => dispatch(toggleModal())}
@@ -70,7 +70,7 @@ function Home() {
             Ask Question
           </Button>
           <QuestionModal dispatch={dispatch} />
-        </Box>
+        </Box>}
         <Stack
           direction="row"
           flexWrap="wrap"
