@@ -3,15 +3,15 @@
 
 # Project Description
 
-`"Quora Clone" is a web application created as a clone of the popular Q&A platform, Quora. It is developed using the MERN stack, which includes MongoDB for the database, Express.js for the backend, React for the frontend, and Node.js to run the server.`
+`"Quora Concept Clone" is a web application created as a clone of the popular Q&A platform, Quora. It is developed using the MERN stack, which includes MongoDB for the database, Express.js for the backend, React for the frontend, and Node.js to run the server.`
 
-`Key features of "Quora Clone" include user authentication, allowing users to sign up and log in securely to access personalized features. Once logged in, users can post questions, view and answer questions from other users, and engage in discussions through comments and replies.`
+`Key features of "Quora Concept Clone" include user authentication, allowing users to sign up and log in securely to access personalized features. Once logged in, users can post questions, view and answer questions from other users, and engage in discussions through comments and replies.`
 
 `The platform enables users to upvote or downvote answers, promoting the best responses to rise to the top and fostering a dynamic and informative environment. Real-time notifications keep users informed about new answers, comments, and responses to their questions.`
 
-`"Quora Clone" also offers a responsive design, ensuring a seamless experience on various devices such as desktops, tablets, and smartphones. Users can create personalized profiles, featuring avatars, bios, and activity history to showcase their expertise and interests.`
+`"Quora Concept Clone" also offers a responsive design, ensuring a seamless experience on various devices such as desktops, tablets, and smartphones. Users can create personalized profiles, featuring avatars, bios, and activity history to showcase their expertise and interests.`
 
-`The application incorporates a search functionality that allows users to easily find specific questions, topics, or users of interest. With "Quora Clone," users can explore a world of curiosity, diverse perspectives, and insightful conversations in a thriving knowledge-sharing community.`
+`The application incorporates a search functionality that allows users to easily find specific questions, topics, or users of interest. With Quora Concept Clone," users can explore a world of curiosity, diverse perspectives, and insightful conversations in a thriving knowledge-sharing community.`
 
 # Instructions
 
