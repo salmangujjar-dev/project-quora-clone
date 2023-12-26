@@ -1,5 +1,6 @@
-# Deployed on Vercel 
-(Vercel Link)[https://project-quora-clone-front.vercel.app/]
+# Deployed on Vercel
+
+[Vercel Link](https://project-quora-clone-front.vercel.app/)
 
 # Project Description
 
